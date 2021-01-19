@@ -1,7 +1,8 @@
 import './App.css';
+import Cart from './Cart';
 
 function App() {
-    return <div />;
+    return <Cart />;
 }
 
 export default App;

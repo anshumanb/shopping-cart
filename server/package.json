@@ -1,0 +1,21 @@
+{
+  "name": "@local/shopping-cart-server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Server module for a basic shopping cart",
+  "main": "./index.js",
+  "exports": "./index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "nodemon start.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.1.1"
+  }
+}

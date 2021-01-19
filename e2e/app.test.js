@@ -26,6 +26,9 @@ describe('View cart', () => {
         const expected = readJson(inRootDir('cart.json'));
         const products = await page.$x('//li[contains(., "SKU")]');
         expect(products.length).toBe(expected.products.length);
-        // verify SKUs
+        for (const [index, p] of products.entries()) {
+            const expectedProduct = expected.products[index];
+            await expect(p).toMatch(expectedProduct.productSku);
+        }
     });
 });

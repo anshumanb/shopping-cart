@@ -9,12 +9,18 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run build && npm run dev:server",
+    "dev:client": "react-scripts start",
+    "dev:server": "cd server && npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:endtoend": "jest -c e2e/jest.config.js",
+    "test:client": "react-scripts test",
+    "test:server": "cd server && npm test",
+    "test:server:watch": "cd server && npm run test:watch",
+    "test:endtoend": "npm run build && jest -c e2e/jest.config.js",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -40,6 +46,7 @@
     "husky": "^4.3.8",
     "jest-puppeteer": "^4.4.0",
     "lint-staged": "^10.5.3",
+    "msw": "^0.25.0",
     "prettier": "^2.2.1",
     "puppeteer": "^5.5.0"
   },
