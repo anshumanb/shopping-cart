@@ -33,8 +33,8 @@ it('should display cart contents', async () => {
 
     renderedProducts.forEach((prod, index) => {
         const { getByText } = within(prod);
-        expect(getByText(products[index].sku)).toBeInTheDocument();
-        expect(getByText(products[index].name)).toBeInTheDocument();
-        expect(getByText(products[index].quantity)).toBeInTheDocument();
+        expect(getByText(products[index].sku)).toBeVisible();
+        expect(getByText(products[index].name)).toBeVisible();
+        expect(getByText(products[index].quantity)).toBeVisible();
     });
 });

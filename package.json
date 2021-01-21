@@ -15,12 +15,11 @@
     "dev:client": "react-scripts start",
     "dev:server": "cd server && npm start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npm run test:client -- --watchAll=false && npm run test:server && npm run test:endtoend",
     "test:client": "react-scripts test",
     "test:server": "cd server && npm test",
     "test:server:watch": "cd server && npm run test:watch",
-    "test:endtoend": "npm run build && jest -c e2e/jest.config.js",
-    "eject": "react-scripts eject"
+    "test:endtoend": "npm run build && jest -c e2e/jest.config.js"
   },
   "proxy": "http://localhost:8080",
   "eslintConfig": {
