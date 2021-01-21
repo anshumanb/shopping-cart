@@ -19,7 +19,8 @@
     "test:client": "react-scripts test",
     "test:server": "cd server && npm test",
     "test:server:watch": "cd server && npm run test:watch",
-    "test:endtoend": "npm run build && jest -c e2e/jest.config.js"
+    "test:endtoend": "npm run build && jest -c e2e/jest.config.js",
+    "postinstall": "cd server && npm ci"
   },
   "proxy": "http://localhost:8080",
   "eslintConfig": {
