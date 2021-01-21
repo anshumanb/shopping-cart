@@ -1,3 +1,4 @@
+import React from 'react';
 import './Product.scss';
 
 function SRLabel({ text }) {
@@ -8,7 +9,7 @@ function KeyValue({ entries, ...rest }) {
     return (
         <dl {...rest}>
             {entries.map(({ key, value, className, ...rest }) => (
-                <>
+                <React.Fragment key={key}>
                     <dt>
                         <SRLabel text={key} />
                     </dt>
@@ -18,7 +19,7 @@ function KeyValue({ entries, ...rest }) {
                     >
                         {value}
                     </dd>
-                </>
+                </React.Fragment>
             ))}
         </dl>
     );
