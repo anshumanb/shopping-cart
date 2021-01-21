@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 async function getOrder(id) {
     try {
-        return (await fetch(`/api/orders/${id}`)).json();
+        return (await axios.get(`/api/orders/${id}/`)).data;
     } catch {
         return {
             purchaseOrders: [],

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 async function getCart() {
     try {
-        return (await fetch('/api/cart/')).json();
+        return (await axios.get('/api/cart/')).data;
     } catch {
         return {
             products: [],
