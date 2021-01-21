@@ -15,7 +15,7 @@ const response = {
 };
 
 const mockServer = setupServer(
-    rest.get('/api/cart/', (req, res, ctx) => {
+    rest.get('/api/cart/', (_, res, ctx) => {
         return res(ctx.json(response));
     })
 );
@@ -38,5 +38,3 @@ it('should display cart contents', async () => {
         expect(getByText(products[index].quantity)).toBeInTheDocument();
     });
 });
-
-// empty cart
