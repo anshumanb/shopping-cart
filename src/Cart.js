@@ -11,7 +11,11 @@ async function getCart() {
     }
 }
 
-export default function Cart() {
+async function checkoutCart() {
+    return (await axios.post('/api/cart/checkout/')).data.orderId;
+}
+
+export default function Cart({ onCheckout }) {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         (async () => {
@@ -20,23 +24,32 @@ export default function Cart() {
         })();
     }, []);
 
+    const checkout = async (e) => {
+        e.preventDefault();
+        const orderId = await checkoutCart();
+        onCheckout && onCheckout(orderId);
+    };
+
     return (
         <>
             {!!products.length && (
-                <ul>
-                    {products.map((p) => (
-                        <li key={p.sku}>
-                            <dl>
-                                <dt>SKU</dt>
-                                <dd>{p.sku}</dd>
-                                <dt>Name</dt>
-                                <dd>{p.name}</dd>
-                                <dt>Quantity</dt>
-                                <dd>{p.quantity}</dd>
-                            </dl>
-                        </li>
-                    ))}
-                </ul>
+                <form>
+                    <ul>
+                        {products.map((p) => (
+                            <li key={p.sku}>
+                                <dl>
+                                    <dt>SKU</dt>
+                                    <dd>{p.sku}</dd>
+                                    <dt>Name</dt>
+                                    <dd>{p.name}</dd>
+                                    <dt>Quantity</dt>
+                                    <dd>{p.quantity}</dd>
+                                </dl>
+                            </li>
+                        ))}
+                    </ul>
+                    <button onClick={checkout}>Checkout</button>
+                </form>
             )}
         </>
     );
