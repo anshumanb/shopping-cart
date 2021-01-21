@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Product, Supplier, Payment, Quantity } from './Product';
+import './Cart.scss';
 
 async function getCart() {
     try {
@@ -31,26 +33,34 @@ export default function Cart({ onCheckout }) {
     };
 
     return (
-        <>
-            {!!products.length && (
-                <form>
-                    <ul>
-                        {products.map((p) => (
-                            <li key={p.sku}>
-                                <dl>
-                                    <dt>SKU</dt>
-                                    <dd>{p.sku}</dd>
-                                    <dt>Name</dt>
-                                    <dd>{p.name}</dd>
-                                    <dt>Quantity</dt>
-                                    <dd>{p.quantity}</dd>
-                                </dl>
-                            </li>
-                        ))}
-                    </ul>
-                    <button onClick={checkout}>Checkout</button>
-                </form>
-            )}
-        </>
+        <form>
+            <ul className="cart">
+                {products.map((p) => {
+                    return (
+                        <li className="cart__product" key={p.sku}>
+                            <Product product={p} />
+                            <p className="cart-product__supplier-label">
+                                Supplied by
+                            </p>
+                            <Supplier
+                                className="cart-product__supplier"
+                                supplier={p.supplier}
+                            />
+                            <Quantity
+                                className="cart-product__quantity"
+                                quantity={p.quantity}
+                            />
+                            <Payment
+                                className="cart-product__payment"
+                                payment={p.payment}
+                            />
+                        </li>
+                    );
+                })}
+            </ul>
+            <button className="cart__checkout" onClick={checkout}>
+                Checkout
+            </button>
+        </form>
     );
 }

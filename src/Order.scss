@@ -1,0 +1,33 @@
+.order {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.order__purchase-order {
+    padding-bottom: 2em;
+}
+
+.order__purchase-order + .order__purchase-order {
+    border-top: 1px solid #cecece;
+    padding-top: 1em;
+}
+
+.purchase-order {
+    display: flex;
+    flex-wrap: wrap;
+}
+.purchase-order__supplier {
+    flex: 1 1 25%;
+    min-width: 12em;
+}
+.purchase-order__products {
+    flex: 1 1 75%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.purchase-order__product {
+    border-left: 4px solid #454545;
+    padding-left: 1em;
+}

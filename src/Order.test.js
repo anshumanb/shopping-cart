@@ -10,11 +10,23 @@ const response = {
                 id: 'SUPP01',
             },
             products: [
-                { sku: 'TEST01', name: 'Custom Product A', quantity: 500 },
+                {
+                    sku: 'TEST01',
+                    name: 'Custom Product A',
+                    quantity: 500,
+                    payment: {
+                        symbol: '$$',
+                        total: '999.99',
+                    },
+                },
                 {
                     sku: 'TEST02',
                     name: 'Custom Product B',
                     quantity: 1500,
+                    payment: {
+                        symbol: '$$',
+                        total: '199.99',
+                    },
                 },
             ],
         },
@@ -23,11 +35,20 @@ const response = {
                 id: 'SUPP02',
             },
             products: [
-                { sku: 'TEST03', name: 'Custom Product AB', quantity: 2500 },
+                {
+                    sku: 'TEST03',
+                    name: 'Custom Product AB',
+                    quantity: 2500,
+                    payment: { symbol: '$$', total: '9.99' },
+                },
                 {
                     sku: 'TEST04',
                     name: 'Custom Product BC',
                     quantity: 3500,
+                    payment: {
+                        symbol: '$$',
+                        total: '99.99',
+                    },
                 },
             ],
         },

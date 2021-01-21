@@ -1,0 +1,29 @@
+.sr-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.key-value__value {
+    margin: 0;
+}
+
+.product__name,
+.supplier__name {
+    font-size: 1.25em;
+}
+.product__sku,
+.supplier__id {
+    font-size: 0.8em;
+    color: #595959;
+}
+
+.quantity__label,
+.payment__label {
+    margin-right: 0.5em;
+}

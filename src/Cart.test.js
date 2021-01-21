@@ -5,11 +5,33 @@ import { render, within } from '@testing-library/react';
 
 const response = {
     products: [
-        { sku: 'TEST01', name: 'Custom Product A', quantity: 500 },
+        {
+            sku: 'TEST01',
+            name: 'Custom Product A',
+            quantity: 500,
+            description: 'description',
+            supplier: {
+                id: 'SUPP01',
+                name: 'Supplier 001',
+            },
+            payment: {
+                symbol: '$$',
+                total: '55.00',
+            },
+        },
         {
             sku: 'TEST02',
             name: 'Custom Product B',
             quantity: 1500,
+            description: 'description',
+            supplier: {
+                id: 'SUPP02',
+                name: 'Supplier 002',
+            },
+            payment: {
+                symbol: '$$',
+                total: '45.00',
+            },
         },
     ],
 };

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Cart from './Cart';
 import Order from './Order';
 import {
@@ -11,13 +11,28 @@ import {
 
 function CartPage() {
     const history = useHistory();
-    const checkout = (id) => history.push(`/checkout/${id}/`);
-    return <Cart onCheckout={checkout} />;
+    const goToSuccessPage = (id) => history.push(`/checkout/${id}/`);
+    return (
+        <>
+            <h1 className="cart-page__title">Your cart</h1>
+            <Cart onCheckout={goToSuccessPage} />
+        </>
+    );
 }
 
 function CheckoutSuccessPage() {
     const { id } = useParams();
-    return <Order id={id} />;
+    return (
+        <>
+            <h1 className="checkout-success-page__title">
+                Checkout successful
+            </h1>
+            <p className="checkout-success-page__subtitle">
+                Your order has been placed
+            </p>
+            <Order id={id} />
+        </>
+    );
 }
 
 function App() {

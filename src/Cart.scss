@@ -1,0 +1,26 @@
+.cart {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cart__checkout {
+    padding: 1em;
+    font-size: 1.25em;
+}
+
+.cart__product {
+    margin-bottom: 2em;
+    padding: 0.5em 1em;
+    border-left: 4px solid #454545;
+    border-top: 1px solid #cecece;
+}
+
+.cart-product__supplier-label {
+    font-size: 0.85em;
+    margin-top: 1.25em;
+}
+
+.cart-product__quantity {
+    margin-top: 1em;
+}

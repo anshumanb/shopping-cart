@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Product, Supplier, Payment, Quantity } from './Product';
+import './Order.scss';
 
 async function getOrder(id) {
     try {
@@ -11,33 +13,29 @@ async function getOrder(id) {
     }
 }
 
-function Product({ product }) {
-    return (
-        <dl>
-            <dt>SKU</dt>
-            <dd>{product.sku}</dd>
-            <dt>Name</dt>
-            <dd>{product.name}</dd>
-            <dt>Quantity</dt>
-            <dd>{product.quantity}</dd>
-        </dl>
-    );
-}
-
 function PurchaseOrder({ purchaseOrder }) {
     const { supplier, products } = purchaseOrder;
     const supplierId = supplier.id;
     return (
-        <>
-            <p id={supplierId}>{supplierId}</p>
-            <ul aria-labelledby={supplierId}>
+        <div className="purchase-order">
+            <Supplier
+                className="purchase-order__supplier"
+                nameId={supplierId}
+                supplier={supplier}
+            />
+            <ul
+                className="purchase-order__products"
+                aria-labelledby={supplierId}
+            >
                 {products.map((p) => (
-                    <li key={p.sku}>
+                    <li className="purchase-order__product" key={p.sku}>
                         <Product product={p} />
+                        <Quantity quantity={p.quantity} />
+                        <Payment payment={p.payment} />
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 }
 
@@ -52,16 +50,12 @@ export default function Order({ id }) {
     }, [id]);
 
     return (
-        <>
-            {!!purchaseOrders.length && (
-                <ul>
-                    {purchaseOrders.map((po) => (
-                        <li key={po.supplier.id}>
-                            <PurchaseOrder purchaseOrder={po} />
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </>
+        <ul className="order">
+            {purchaseOrders.map((po) => (
+                <li className="order__purchase-order" key={po.supplier.id}>
+                    <PurchaseOrder purchaseOrder={po} />
+                </li>
+            ))}
+        </ul>
     );
 }
